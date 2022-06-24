@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/clirimuskana/donepin-api.git"
+    "url": "https://github.com/wholespace/donepin-express-backend.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/clirimuskana/donepin-api/issues"
+    "url": "https://github.com/wholespace/donepin-express-backend/issues"
   },
-  "homepage": "https://github.com/clirimuskana/donepin-api#readme",
+  "homepage": "https://github.com/wholespace/donepin-express-backend#readme",
   "dependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/body-parser": "^1.19.1",
