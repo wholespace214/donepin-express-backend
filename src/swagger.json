@@ -1,0 +1,1131 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "LoyalToo",
+    "description": "LoyalToo Application API",
+    "version": "1.0.0"
+  },
+  "host": "https://api.donepin.com",
+  "basePath": "/api/v1",
+  "servers": [
+    {
+      "url": "http://localhost:9071"
+    },
+    {
+      "url": "https://api.donepin.com"
+    }
+  ],
+  "schemes":[
+    "http",
+    "https"
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "API for User in the system"
+    }
+  ],
+  "paths": {
+    "/user/register": {
+      "post": {
+        "tags": ["user"],
+        "summary": "register new user",
+        "description": "",
+        "operationId": "register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "confirmpassword": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/user/login": {
+      "post": {
+        "tags": ["user"],
+        "summary": "login user",
+        "description": "",
+        "operationId": "login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "example":"user@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example":"ashish123"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/resend/verification/email": {
+      "post": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/verify": {
+      "patch": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "verificationToken": { "type": "number" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/user/reset/password": {
+      "get": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/user/verify/resetPasswordToken": {
+      "get": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "resetPasswordToken",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/user/resetPassword": {
+      "patch": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "resetPasswordToken": { 
+                    "type": "number"
+                   },
+                   "newPassword": {
+                    "type": "string"
+                  },
+                   "confirmPassword":{
+                     "type": "string"
+                   }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+
+    "/user/update/password": {
+      "patch": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "password": { 
+                    "type": "string"
+                   },
+                   "newPassword": {
+                    "type": "string"
+                  },
+                   "confirmPassword":{
+                     "type": "string"
+                   }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+
+    "/user/addTeamMember/{memberId}": {
+      "post": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "memberEmail": {
+                    "type": "string"
+                  },
+                  "memberJobRole": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+
+    "/user/resend/teamVerificationToken": {
+      "post": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "memberEmail": { 
+                    "type": "string"
+                   },
+                   "_id": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+
+    "/user/verify/teamMemberToken": {
+      "patch": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "memberEmail": { 
+                    "type": "string"
+                   },
+                   "teamVerificationToken": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/editMember/{_id}/{memberId}": {
+      "patch": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/team"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+
+    "/user/addTeamRole/{_id}/{memberId}": {
+      "patch": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "memberJobRole": { 
+                    "type": "string"
+                   }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/editTeamRole/{_id}/{memberId}": {
+      "patch": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "memberId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "groupName": { 
+                    "type": "string"
+                   },
+                   "isView": { 
+                    "type": "boolean"
+                   },
+                   "isTeam": { 
+                    "type": "boolean"
+                   },
+                   "isManage": { 
+                    "type": "boolean"
+                   },
+                   "isAdmin": { 
+                    "type": "boolean"
+                   }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+
+    "/user/getTeamMembers": {
+      "get": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }, "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+
+
+    "/user/createGroup/{teamId}": {
+      "post": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "teamId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "groupName": { 
+                    "type": "string"
+                   }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+
+    "/user/addGroupMember/{_id}/{memberId}": {
+      "patch": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "memberId",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/getGroupMembers": {
+      "get": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "groupName",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }, "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/user/getGroups": {
+      "get": {
+        "tags": ["user"],
+        "summary": "",
+        "description": "",
+        "operationId": "",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }, "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "user": {
+        "required": ["email", "password", "first_name", "last_name"],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "email": {
+            "type": "string",
+            "example": "admin@gmail.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "admin"
+          },
+          "image": {
+            "type": "array",
+            "xml": {
+              "name": "photo",
+              "wrapped": true
+            }
+          },
+
+          "firstName": {
+            "type": "string",
+            "example": "robin"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "bing"
+          },
+          "status": { "type": "string" },
+          "role": { "type": "string" },
+          "isMember": { "type": "boolean" },
+          "isDeleted": { "type": "boolean" },
+          "isEmailVerified": { "type": "boolean" },
+          "emailVerificationToken": { "type": "number" },
+          "emailVerificationTokenTime": { "type": "date" },
+          "resetPasswordToken": { "type": "number" },
+          "resetPasswordTokenTime": { "type": "date" },
+          "createdAt": { "type": "date" },
+          "updatedAt": { "type": "date" }
+        },
+
+        "xml": {
+          "name": "user"
+        }
+      },
+
+      "team": {
+        "required": ["memberEmail", "memberId"],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "memberEmail": {
+            "type": "string",
+            "example": "admin@gmail.com"
+          },
+          "memberId": {
+            "$ref": "#/components/schemas/user"
+          },
+          "adminId": {
+            "$ref": "#/components/schemas/user"
+          },
+          "memberJobRole": {
+            "type": "string"
+          },
+
+          "teamMemberRole": {
+            "type": "string",
+            "example": "VIEW"
+          },
+          "teamMemberStatus": {
+            "type": "string",
+            "example": "ACTIVE"
+          },
+          "groupId": { "$ref": "#/components/schemas/group" },
+          "workingTime": { "type": "string", "example": "FULL TIME" },
+          "hoursPerWeek": { "type": "number" },
+          "yearlyVacation": { "type": "number" },
+          "isVacationReset": { "type": "boolean" },
+          "vacationResetMonth": { "type": "string" },
+          "isDeleted": { "type": "boolean" },
+          "isMember": { "type": "boolean" },
+          "teamVerificationToken": { "type": "number" },
+          "teamVerificationTokenTime": { "type": "date" },
+          "createdAt": { "type": "date" },
+          "updatedAt": { "type": "date" }
+        },
+
+        "xml": {
+          "name": "team"
+        }
+      },
+      "group": {
+        "required": ["groupName", "membersId", "teamId", "groupType"],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "groupName": {
+            "type": "string",
+            "example": "IT"
+          },
+          "memberId": {
+            "$ref": "#/components/schemas/user"
+          },
+          "adminId": {
+            "$ref": "#/components/schemas/user"
+          },
+          "teamId": {
+            "$ref": "#/components/schemas/team"
+          },
+          "status": {
+            "type": "string",
+            "example": "ACTIVE"
+          },
+          "isDeleted": { "type": "boolean" },
+          "createdAt": { "type": "date" },
+          "updatedAt": { "type": "date" }
+        },
+
+        "xml": {
+          "name": "group"
+        }
+      },
+
+      "ApiResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "type": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
